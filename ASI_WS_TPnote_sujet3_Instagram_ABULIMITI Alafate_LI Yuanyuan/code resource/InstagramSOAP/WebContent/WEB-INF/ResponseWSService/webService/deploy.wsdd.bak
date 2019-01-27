@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ResponseWSService WSDL service -->
+
+  <service name="ResponseWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webService"/>
+      <parameter name="wsdlServiceElement" value="ResponseWSService"/>
+      <parameter name="schemaQualified" value="http://webService"/>
+      <parameter name="wsdlServicePort" value="ResponseWS"/>
+      <parameter name="className" value="webService.ResponseWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ResponseWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getAllResByPid" qname="operNS:getAllResByPid" xmlns:operNS="http://webService" returnQName="retNS:getAllResByPidReturn" xmlns:retNS="http://webService" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userName" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:pId" xmlns:pns="http://webService" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteRes" qname="operNS:deleteRes" xmlns:operNS="http://webService" returnQName="retNS:deleteResReturn" xmlns:retNS="http://webService" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userName" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rId" xmlns:pns="http://webService" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createRes" qname="operNS:createRes" xmlns:operNS="http://webService" returnQName="retNS:createResReturn" xmlns:retNS="http://webService" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userName" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:comment" xmlns:pns="http://webService" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:pId" xmlns:pns="http://webService" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAllResByPid deleteRes createRes"/>
+
+  </service>
+</deployment>

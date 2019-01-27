@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FollowsWSService WSDL service -->
+
+  <service name="FollowsWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webService"/>
+      <parameter name="wsdlServiceElement" value="FollowsWSService"/>
+      <parameter name="schemaQualified" value="http://webService"/>
+      <parameter name="wsdlServicePort" value="FollowsWS"/>
+      <parameter name="className" value="webService.FollowsWS"/>
+      <parameter name="wsdlPortType" value="FollowsWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webService" xmlns:retNS="http://webService" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteFollow" qname="operNS:deleteFollow" returnQName="retNS:deleteFollowReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:followId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webService" xmlns:retNS="http://webService" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteFollower" qname="operNS:deleteFollower" returnQName="retNS:deleteFollowerReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:followerId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webService" xmlns:retNS="http://webService" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createFollow" qname="operNS:createFollow" returnQName="retNS:createFollowReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:followId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webService" xmlns:retNS="http://webService" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFollowsOfUser" qname="operNS:getFollowsOfUser" returnQName="retNS:getFollowsOfUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webService" xmlns:retNS="http://webService" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFollowersOfUser" qname="operNS:getFollowersOfUser" returnQName="retNS:getFollowersOfUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getFollowersOfUser getFollowsOfUser deleteFollow deleteFollower createFollow"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,184 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="F:\informatique2\tomcat\apache-tomcat-9.0.4-windows-x64\apache-tomcat-9.0.4\wtpwebapps\InstagramSOAP\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="PublicationWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getOtherAllPubs" qname="ns1:getOtherAllPubs" returnQName="ns1:getOtherAllPubsReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:userName" type="xsd:string"/>
+   <ns2:parameter qname="ns1:password" type="xsd:string"/>
+   <ns2:parameter qname="ns1:follew_uId" type="xsd:int"/>
+  </ns2:operation>
+  <ns1:operation name="getOwnAllPubs" qname="ns2:getOwnAllPubs" returnQName="ns2:getOwnAllPubsReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns2:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createPub" qname="ns3:createPub" returnQName="ns3:createPubReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns3:password" type="xsd:string"/>
+   <ns1:parameter qname="ns3:imagePath" type="xsd:string"/>
+   <ns1:parameter qname="ns3:comment" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getPub" qname="ns4:getPub" returnQName="ns4:getPubReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns4:password" type="xsd:string"/>
+   <ns1:parameter qname="ns4:pId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="deletePub" qname="ns5:deletePub" returnQName="ns5:deletePubReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns5:password" type="xsd:string"/>
+   <ns1:parameter qname="ns5:pId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getOtherAllPubs getOwnAllPubs createPub deletePub getPub"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PublicationWS"/>
+  <ns1:parameter name="className" value="webService.PublicationWS"/>
+  <ns1:parameter name="wsdlServicePort" value="PublicationWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webService"/>
+  <ns1:parameter name="wsdlServiceElement" value="PublicationWSService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="UserWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createUser" qname="ns6:createUser" returnQName="ns6:createUserReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns6:password" type="xsd:string"/>
+   <ns1:parameter qname="ns6:privacy" type="xsd:boolean"/>
+  </ns1:operation>
+  <ns1:operation name="deleteUser" qname="ns7:deleteUser" returnQName="ns7:deleteUserReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updateName" qname="ns8:updateName" returnQName="ns8:updateNameReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns8:password" type="xsd:string"/>
+   <ns1:parameter qname="ns8:newUserName" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updatePrivacy" qname="ns9:updatePrivacy" returnQName="ns9:updatePrivacyReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns9:password" type="xsd:string"/>
+   <ns1:parameter qname="ns9:newPrivacy" type="xsd:boolean"/>
+  </ns1:operation>
+  <ns1:operation name="updatePassword" qname="ns10:updatePassword" returnQName="ns10:updatePasswordReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns10:password" type="xsd:string"/>
+   <ns1:parameter qname="ns10:newPassword" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getUserByNameAndPassword" qname="ns11:getUserByNameAndPassword" returnQName="ns11:getUserByNameAndPasswordReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns11:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="updatePassword deleteUser updatePrivacy getUserByNameAndPassword createUser updateName"/>
+  <ns1:parameter name="wsdlPortType" value="UserWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webService"/>
+  <ns1:parameter name="wsdlServicePort" value="UserWS"/>
+  <ns1:parameter name="className" value="webService.UserWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webService"/>
+  <ns1:parameter name="wsdlServiceElement" value="UserWSService"/>
+ </ns1:service>
+ <ns1:service name="FollowsWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="deleteFollow" qname="ns12:deleteFollow" returnQName="ns12:deleteFollowReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns12:password" type="xsd:string"/>
+   <ns1:parameter qname="ns12:followId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="deleteFollower" qname="ns13:deleteFollower" returnQName="ns13:deleteFollowerReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns13:password" type="xsd:string"/>
+   <ns1:parameter qname="ns13:followerId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="createFollow" qname="ns14:createFollow" returnQName="ns14:createFollowReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns14:password" type="xsd:string"/>
+   <ns1:parameter qname="ns14:followId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="getFollowsOfUser" qname="ns15:getFollowsOfUser" returnQName="ns15:getFollowsOfUserReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns15:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getFollowersOfUser" qname="ns16:getFollowersOfUser" returnQName="ns16:getFollowersOfUserReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns16:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getFollowersOfUser getFollowsOfUser deleteFollow deleteFollower createFollow"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="FollowsWS"/>
+  <ns1:parameter name="className" value="webService.FollowsWS"/>
+  <ns1:parameter name="wsdlServicePort" value="FollowsWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webService"/>
+  <ns1:parameter name="wsdlServiceElement" value="FollowsWSService"/>
+ </ns1:service>
+ <ns1:service name="ResponseWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getAllResByPid" qname="ns17:getAllResByPid" returnQName="ns17:getAllResByPidReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns17:password" type="xsd:string"/>
+   <ns1:parameter qname="ns17:pId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="deleteRes" qname="ns18:deleteRes" returnQName="ns18:deleteResReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns18:password" type="xsd:string"/>
+   <ns1:parameter qname="ns18:rId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="createRes" qname="ns19:createRes" returnQName="ns19:createResReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://webService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:userName" type="xsd:string"/>
+   <ns1:parameter qname="ns19:password" type="xsd:string"/>
+   <ns1:parameter qname="ns19:comment" type="xsd:string"/>
+   <ns1:parameter qname="ns19:pId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getAllResByPid deleteRes createRes"/>
+  <ns1:parameter name="wsdlPortType" value="ResponseWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webService"/>
+  <ns1:parameter name="wsdlServicePort" value="ResponseWS"/>
+  <ns1:parameter name="className" value="webService.ResponseWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webService"/>
+  <ns1:parameter name="wsdlServiceElement" value="ResponseWSService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

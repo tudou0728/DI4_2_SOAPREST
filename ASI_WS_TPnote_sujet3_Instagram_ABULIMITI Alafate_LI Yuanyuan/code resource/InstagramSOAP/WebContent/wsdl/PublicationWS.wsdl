@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webService" xmlns:intf="http://webService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getOtherAllPubs">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="follew_uId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOtherAllPubsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getOtherAllPubsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOwnAllPubs">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOwnAllPubsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getOwnAllPubsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPub">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="imagePath" type="xsd:string"/>
+      <element name="comment" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPubResponse">
+    <complexType>
+     <sequence>
+      <element name="createPubReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPub">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="pId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPubResponse">
+    <complexType>
+     <sequence>
+      <element name="getPubReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletePub">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="pId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletePubResponse">
+    <complexType>
+     <sequence>
+      <element name="deletePubReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deletePubResponse">
+
+      <wsdl:part element="impl:deletePubResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPubRequest">
+
+      <wsdl:part element="impl:getPub" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOwnAllPubsRequest">
+
+      <wsdl:part element="impl:getOwnAllPubs" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOwnAllPubsResponse">
+
+      <wsdl:part element="impl:getOwnAllPubsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPubRequest">
+
+      <wsdl:part element="impl:createPub" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPubResponse">
+
+      <wsdl:part element="impl:getPubResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletePubRequest">
+
+      <wsdl:part element="impl:deletePub" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOtherAllPubsRequest">
+
+      <wsdl:part element="impl:getOtherAllPubs" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOtherAllPubsResponse">
+
+      <wsdl:part element="impl:getOtherAllPubsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPubResponse">
+
+      <wsdl:part element="impl:createPubResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PublicationWS">
+
+      <wsdl:operation name="getOtherAllPubs">
+
+         <wsdl:input message="impl:getOtherAllPubsRequest" name="getOtherAllPubsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOtherAllPubsResponse" name="getOtherAllPubsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOwnAllPubs">
+
+         <wsdl:input message="impl:getOwnAllPubsRequest" name="getOwnAllPubsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOwnAllPubsResponse" name="getOwnAllPubsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPub">
+
+         <wsdl:input message="impl:createPubRequest" name="createPubRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createPubResponse" name="createPubResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPub">
+
+         <wsdl:input message="impl:getPubRequest" name="getPubRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPubResponse" name="getPubResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletePub">
+
+         <wsdl:input message="impl:deletePubRequest" name="deletePubRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deletePubResponse" name="deletePubResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PublicationWSSoapBinding" type="impl:PublicationWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getOtherAllPubs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOtherAllPubsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOtherAllPubsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOwnAllPubs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOwnAllPubsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOwnAllPubsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPub">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createPubRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createPubResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPub">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPubRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPubResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletePub">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deletePubRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deletePubResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PublicationWSService">
+
+      <wsdl:port binding="impl:PublicationWSSoapBinding" name="PublicationWS">
+
+         <wsdlsoap:address location="http://localhost:8080/InstagramSOAP/services/PublicationWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

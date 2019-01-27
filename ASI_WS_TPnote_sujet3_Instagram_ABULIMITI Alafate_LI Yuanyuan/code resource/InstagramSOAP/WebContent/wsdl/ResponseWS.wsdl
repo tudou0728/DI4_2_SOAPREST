@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webService" xmlns:intf="http://webService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getAllResByPid">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="pId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllResByPidResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllResByPidReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteRes">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="rId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteResResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteResReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createRes">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="comment" type="xsd:string"/>
+      <element name="pId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createResResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="createResReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createResRequest">
+
+      <wsdl:part element="impl:createRes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createResResponse">
+
+      <wsdl:part element="impl:createResResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteResResponse">
+
+      <wsdl:part element="impl:deleteResResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllResByPidRequest">
+
+      <wsdl:part element="impl:getAllResByPid" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllResByPidResponse">
+
+      <wsdl:part element="impl:getAllResByPidResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteResRequest">
+
+      <wsdl:part element="impl:deleteRes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ResponseWS">
+
+      <wsdl:operation name="getAllResByPid">
+
+         <wsdl:input message="impl:getAllResByPidRequest" name="getAllResByPidRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllResByPidResponse" name="getAllResByPidResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteRes">
+
+         <wsdl:input message="impl:deleteResRequest" name="deleteResRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteResResponse" name="deleteResResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createRes">
+
+         <wsdl:input message="impl:createResRequest" name="createResRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createResResponse" name="createResResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ResponseWSSoapBinding" type="impl:ResponseWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAllResByPid">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllResByPidRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllResByPidResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteRes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteResRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteResResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createRes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createResRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createResResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ResponseWSService">
+
+      <wsdl:port binding="impl:ResponseWSSoapBinding" name="ResponseWS">
+
+         <wsdlsoap:address location="http://localhost:8080/InstagramSOAP/services/ResponseWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webService" xmlns:intf="http://webService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="deleteFollow">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="followId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteFollowResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteFollowReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteFollower">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="followerId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteFollowerResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteFollowerReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createFollow">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="followId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createFollowResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="createFollowReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFollowsOfUser">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFollowsOfUserResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFollowsOfUserReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFollowersOfUser">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFollowersOfUserResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFollowersOfUserReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getFollowersOfUserResponse">
+
+      <wsdl:part element="impl:getFollowersOfUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteFollowResponse">
+
+      <wsdl:part element="impl:deleteFollowResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createFollowResponse">
+
+      <wsdl:part element="impl:createFollowResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteFollowerRequest">
+
+      <wsdl:part element="impl:deleteFollower" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFollowsOfUserRequest">
+
+      <wsdl:part element="impl:getFollowsOfUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteFollowerResponse">
+
+      <wsdl:part element="impl:deleteFollowerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFollowsOfUserResponse">
+
+      <wsdl:part element="impl:getFollowsOfUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFollowersOfUserRequest">
+
+      <wsdl:part element="impl:getFollowersOfUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteFollowRequest">
+
+      <wsdl:part element="impl:deleteFollow" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createFollowRequest">
+
+      <wsdl:part element="impl:createFollow" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FollowsWS">
+
+      <wsdl:operation name="deleteFollow">
+
+         <wsdl:input message="impl:deleteFollowRequest" name="deleteFollowRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteFollowResponse" name="deleteFollowResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteFollower">
+
+         <wsdl:input message="impl:deleteFollowerRequest" name="deleteFollowerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteFollowerResponse" name="deleteFollowerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createFollow">
+
+         <wsdl:input message="impl:createFollowRequest" name="createFollowRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createFollowResponse" name="createFollowResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFollowsOfUser">
+
+         <wsdl:input message="impl:getFollowsOfUserRequest" name="getFollowsOfUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFollowsOfUserResponse" name="getFollowsOfUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFollowersOfUser">
+
+         <wsdl:input message="impl:getFollowersOfUserRequest" name="getFollowersOfUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFollowersOfUserResponse" name="getFollowersOfUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FollowsWSSoapBinding" type="impl:FollowsWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="deleteFollow">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteFollowRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteFollowResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteFollower">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteFollowerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteFollowerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createFollow">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createFollowRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createFollowResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFollowsOfUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFollowsOfUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFollowsOfUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFollowersOfUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFollowersOfUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFollowersOfUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FollowsWSService">
+
+      <wsdl:port binding="impl:FollowsWSSoapBinding" name="FollowsWS">
+
+         <wsdlsoap:address location="http://localhost:8080/InstagramSOAP/services/FollowsWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
